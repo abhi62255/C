@@ -35,29 +35,30 @@ int check()
 
 int rule()
 {
-	printf("Initial State \n");
+	printf("Initial State \n -> Where all Board-state addresses are NULL \n");
 	display();
-	printf("Final States -> Winning of one player OR Draw between players(if non of the final state is achived) \n 1.Any of the symbol(O,X) on following addresses \n 2.Empty addresses can be any one of the symbols. \n");
-	printf("  * |  * | * \n----|----|----\n    |    |   \n----|----|----\n    |    |   \n \n");
-	printf("    |    |   \n----|----|----\n  * |  * | * \n----|----|----\n    |    |   \n\n");
-	printf("    |    |   \n----|----|----\n    |    |   \n----|----|----\n  * |  * | * \n\n");
-	printf("  * |    |   \n----|----|----\n  * |    |   \n----|----|----\n  * |    |   \n\n");
-	printf("    |  * |   \n----|----|----\n    |  * |   \n----|----|----\n    |  * |   \n\n");
-	printf("    |    | * \n----|----|----\n    |    | * \n----|----|----\n    |    | * \n\n");
-	printf("  * |    |   \n----|----|----\n    |  * |   \n----|----|----\n    |    | * \n\n");
-	printf("    |    | * \n----|----|----\n    |  * |   \n----|----|----\n  * |    |   \n\n");	
+	printf("Final States \n -> Winning of one player OR Draw between players(if non of the final state is achived) \n 1.Any of the symbol(O,X) on following addresses \n 2.Empty addresses can be any one of the symbols. \n 3.' * ' Represent (O || X) \n \n");
+	printf("    * |  * | * \n  ----|----|----\n      |    |   \n  ----|----|----\n      |    |   \n \n");
+	printf("      |    |   \n  ----|----|----\n    * |  * | * \n  ----|----|----\n      |    |   \n\n");
+	printf("      |    |   \n  ----|----|----\n      |    |   \n  ----|----|----\n    * |  * | * \n\n");
+	printf("    * |    |   \n  ----|----|----\n    * |    |   \n  ----|----|----\n    * |    |   \n\n");
+	printf("      |  * |   \n  ----|----|----\n      |  * |   \n  ----|----|----\n      |  * |   \n\n");
+	printf("      |    | * \n  ----|----|----\n      |    | * \n  ----|----|----\n      |    | * \n\n");
+	printf("    * |    |   \n  ----|----|----\n      |  * |   \n  ----|----|----\n      |    | * \n\n");
+	printf("      |    | * \n  ----|----|----\n      |  * |   \n  ----|----|----\n    * |    |   \n\n");	
 }
 
 int display()
 {
 	for(i=0;i<3;i++)
 	{
+		printf("  ");
 		for(j=0;j<3;j++)
 		{
 			printf(" %c  ",matrix[i][j]);
 			if(j!=2){printf("|");}
 		}
-		if(i!=2){printf("\n----|----|----\n");}
+		if(i!=2){printf("\n  ----|----|----\n");}
 	}
 	printf("\n \n");
 	return(0);
@@ -301,6 +302,8 @@ int main()
 		scanf("%d",&level);
 	}
 	printf("let's Start THE GAME \n \n");
+	
+	printf(" \n 1.Board-states addresses are same as in below matrix. \n 2.Choose from the above addresses to place your pointer in matrix. \n");
 	for(i=0;i<3;i++)
 	{
 		for(j=0;j<3;j++)
@@ -310,8 +313,6 @@ int main()
 		}
 		if(i!=2){printf("\n----|----|----\n");}
 	}
-	
-	printf(" \n 1.Addresses for the positions are Given in the above matrix. \n 2.Choose from the above addresses to place your pointer in matrix. \n");
 	
 	while(1)
 	{

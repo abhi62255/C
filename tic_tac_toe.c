@@ -1,6 +1,6 @@
 #include<conio.h>
 #include<stdio.h>
-char matrix[3][3],first[30],second[30]="COMPUTER";
+char matrix[3][3],first[30],second[30]="COMPUTER",matrix_rule[3][3]={{1,2,3},{4,5,6},{7,8,9}};
 int i,j,input_val,move[10],m=0,player,level,choice;
 int check()
 {
@@ -261,19 +261,14 @@ int easy_decision()
 	return(val);
 }
 
-
-
-
 int main()
 {
-	//matrix[0][0]=79;
-	//matrix[0][2]=88;
-	back_2:
+	printf("\n *********TIC TAC TOE******** \n");
 	for(i=0;i<3;i++)
 	{
 		for(j=0;j<3;j++)
 		{
-			printf(" %c  ",matrix[i][j]);
+			printf(" %d  ",matrix_rule[i][j]);
 			if(j!=2){printf("|");}
 		}
 		if(i!=2){printf("\n----|----|----\n");}
@@ -372,12 +367,6 @@ int main()
 			printf("\n %s ******WINNER***** \n INPUT : ",second);	
 			break;
 		}	
-	}
-	printf("\n 1.PLAY AGAIN \n 2.EXIT \n CHOICE : ");
-	scanf("%d",&choice);
-	if(choice==1){
-		//assigning matrix to zero	
-		goto back_2;
 	}
 	return(0);
 }

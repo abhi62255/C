@@ -32,6 +32,22 @@ int check()
 		return(0);
 	}
 }
+
+int rule()
+{
+	printf("Initial State \n");
+	display();
+	printf("Final States -> Winning of one player OR Draw between players(if non of the final state is achived) \n 1.Any of the symbol(O,X) on following addresses \n 2.Empty addresses can be any one of the symbols. \n");
+	printf("  * |  * | * \n----|----|----\n    |    |   \n----|----|----\n    |    |   \n \n");
+	printf("    |    |   \n----|----|----\n  * |  * | * \n----|----|----\n    |    |   \n\n");
+	printf("    |    |   \n----|----|----\n    |    |   \n----|----|----\n  * |  * | * \n\n");
+	printf("  * |    |   \n----|----|----\n  * |    |   \n----|----|----\n  * |    |   \n\n");
+	printf("    |  * |   \n----|----|----\n    |  * |   \n----|----|----\n    |  * |   \n\n");
+	printf("    |    | * \n----|----|----\n    |    | * \n----|----|----\n    |    | * \n\n");
+	printf("  * |    |   \n----|----|----\n    |  * |   \n----|----|----\n    |    | * \n\n");
+	printf("    |    | * \n----|----|----\n    |  * |   \n----|----|----\n  * |    |   \n\n");	
+}
+
 int display()
 {
 	for(i=0;i<3;i++)
@@ -263,16 +279,8 @@ int easy_decision()
 
 int main()
 {
+	rule();
 	printf("\n *********TIC TAC TOE******** \n");
-	for(i=0;i<3;i++)
-	{
-		for(j=0;j<3;j++)
-		{
-			printf(" %d  ",matrix_rule[i][j]);
-			if(j!=2){printf("|");}
-		}
-		if(i!=2){printf("\n----|----|----\n");}
-	}
 	printf("\n");
 	printf("Number Of Players (1,2): ");
 	scanf("%d",&player);
@@ -293,6 +301,17 @@ int main()
 		scanf("%d",&level);
 	}
 	printf("let's Start THE GAME \n \n");
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			printf(" %d  ",matrix_rule[i][j]);
+			if(j!=2){printf("|");}
+		}
+		if(i!=2){printf("\n----|----|----\n");}
+	}
+	
+	printf(" \n 1.Addresses for the positions are Given in the above matrix. \n 2.Choose from the above addresses to place your pointer in matrix. \n");
 	
 	while(1)
 	{

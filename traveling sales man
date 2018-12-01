@@ -1,0 +1,113 @@
+#include<stdio.h>
+ 
+int ary[10][10],completed[10],n,cost=0;
+ 
+void takeInput()
+{
+    int i,j;
+ 
+    printf("Enter the number of villages: ");
+    scanf("%d",&n);
+ 
+    printf("\nEnter the Cost Matrix\n");
+ 
+    for(i=0;i < n;i++)
+    {
+        printf("\nEnter Elements of Row: %d\n",i+1);
+ 
+        for( j=0;j < n;j++)
+            scanf("%d",&ary[i][j]);
+ 
+        completed[i]=0;
+    }
+ 
+    printf("\n\nThe cost list is:");
+ 
+    for( i=0;i < n;i++)
+    {
+        printf("\n");
+ 
+        for(j=0;j < n;j++)
+            printf("\t%d",ary[i][j]);
+    }
+}
+ 
+void mincost(int city)
+{
+    int i,ncity;
+ 
+    completed[city]=1;
+ 
+    printf("%d--->",city+1);
+    ncity=least(city);
+ 
+    if(ncity==999)
+    {
+        ncity=0;
+        printf("%d",ncity+1);
+        cost+=ary[city][ncity];
+ 
+        return;
+    }
+ 
+    mincost(ncity);
+}
+ 
+int least(int c)
+{
+    int i,nc=999;
+    int min=999,kmin;
+ 
+    for(i=0;i < n;i++)
+    {
+        if((ary[c][i]!=0)&&(completed[i]==0))
+            if(ary[c][i]+ary[i][c] < min)
+            {
+                min=ary[i][0]+ary[c][i];
+                kmin=ary[c][i];
+                nc=i;
+            }
+    }
+ 
+    if(min!=999)
+        cost+=kmin;
+ 
+    return nc;
+}
+void rules()
+{
+	
+	printf("GENERAL FORM : \n");
+	printf(" * can be any numerical value. \n");
+	
+	printf("FIRST_VILLAGE  SECOND_VILLAGE  THIRD_VILLAGE     ..Upto villages.\n       *              *              *           .. Row one showing distance to other villages from first village.\n       *              *              *           .. Row two showing distance to other villages from Second village.\n       *              *              *           .. And so on Upto n villages\n\n");
+	printf("To find minimum cost to visit all villages \n\n");
+	printf("***** RULES ***** \n");
+	printf(" 1. Name of villages  are 1,2,3,.........n \n");
+	printf(" 2. Starting village is first village. \n");
+	printf(" 3. We have to start from first village to visit all villages and come back to first village. \n");
+	printf(" 4. We cannot revisit a village again. \n");
+	printf(" 5. Their are self loop to a village.\n");
+	printf("   5.1 It indicates internal traveling cost. \n");
+	printf("   5.2 If their is no internal cost then it should be taken as zero.\n");
+	printf(" 6. Cost from first village to second village and from second village to first village is same.\n");
+	printf("   6.1 It indicates bidirectional path. \n");
+	printf("   6.2 Then distance from first village to second village and from second village to first village should be enter same. \n");
+	printf(" 7. Cost from first village to second village and from second village to first village is diffrent.\n");
+	printf("   7.1 It indicates unidirectional path. \n");
+	printf("   7.2 Then distance from first village to second village and from second village to first village should be enter different. \n");
+	
+}
+ 
+int main()
+{
+	rules();
+    takeInput();
+ 
+    printf("\n\nThe Path is:\n");
+    mincost(0); //passing 0 because starting vertex
+ 
+    printf("\n\nMinimum cost is %d\n ",cost);
+ 
+    return 0;
+}
